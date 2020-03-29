@@ -1,0 +1,2 @@
+# jsudoku
+Sudoku in JS

@@ -116,7 +116,7 @@ function findEmptyIndex(board) {
 // Backtracking algorithm from https://see.stanford.edu/materials/icspacs106b/Lecture11.pdf
 async function solve(board) {
     await new Promise(r => setTimeout(r, 200));
-    populateTable(board);
+    await populateTable(board);
     var emptyIndex = findEmptyIndex(board);
     if (emptyIndex === -1) return true;
 
@@ -162,19 +162,23 @@ async function populateTable(board) {
     for (var index = 0; index < board.length; index++) {
         // if a value on the table is being changed, highlight it a different colour as it changes
         var cell = document.getElementById("" + index);
-        if (cell.innerText != board[index]) {
+        var boardValue = board[index];
+        if (boardValue === 0){boardValue = "_";}
+        if (cell.innerText != board[index] && boardValue != "_") {
             cell.style.color = "#204051";
             cell.style.background = "#b4dfe5";
             await new Promise(r => setTimeout(r, 200));
             cell.style.color = "#b4dfe5";
             cell.style.background = "#3b6978";
         }
-        cell.innerHTML = board[index];
+        cell.innerHTML = boardValue;
     }
 }
 
 function quickPopulateTable(board) {
     for (var index = 0; index < board.length; index++) {
-        document.getElementById("" + index).innerHTML = board[index];
+        var boardValue = board[index];
+        if (boardValue === 0){boardValue = "_";}
+        document.getElementById("" + index).innerHTML = boardValue;
     }
 }

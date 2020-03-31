@@ -123,7 +123,7 @@ async function solve(board) {
     for (var value = 1; value < 10; value++) {
         if (checkBoard(board)) {
             board[emptyIndex] = value;
-            if (await solve(board)) {
+            if (await solve(board) && checkBoard(board)) {
                 return true;
             }
             board[emptyIndex] = 0;

@@ -1,6 +1,6 @@
 // From: https://dingo.sbs.arizona.edu/~sandiway/sudoku/examples.html
 var originalBoard = [
-    0, 0, 0, 2, 6, 0, 7, 0, 1
+      0, 0, 0, 2, 6, 0, 7, 0, 1
     , 6, 8, 0, 0, 7, 0, 0, 9, 0
     , 1, 9, 0, 0, 0, 4, 5, 0, 0
     , 8, 2, 0, 1, 0, 0, 0, 4, 0
@@ -127,6 +127,7 @@ function findEmptyIndex(board) {
 
 // Backtracking algorithm from https://see.stanford.edu/materials/icspacs106b/Lecture11.pdf
 function solve(board) {
+    // TODO add delay before populating table
     populateTable(board);
     var emptyIndex = findEmptyIndex(board);
     if (emptyIndex === -1) { // checks if there are empty cells
@@ -161,7 +162,7 @@ function createTable() {
 
     // Create solve button
     var button = document.createElement('button');
-    button.append(document.createTextNode('SOLVE'));
+    button.append(document.createTextNode('solve'));
     button.setAttribute('id', 'solveButton');
     button.setAttribute('onclick', 'solve(board)');
     document.body.appendChild(button);

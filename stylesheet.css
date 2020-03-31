@@ -1,0 +1,41 @@
+body {
+    background-color: #204051;
+    text-align: center;
+    font-family: "Segoe UI";
+}
+
+button{
+    background-color: #3b6978;
+    color: #b4dfe5;
+    border: 5px solid #b4dfe5;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 2%;
+}
+
+table, td{
+    color: #b4dfe5;
+    background: #3b6978;
+    border: 2px solid #b4dfe5;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+table{
+    margin-top: 5%;
+    width: 36%;
+    border: 20px solid #b4dfe5;
+    border-radius: 30px;
+}
+
+td{
+    text-align: center;
+    vertical-align: middle;
+    font-size: 54px;
+    width: 6%;
+}
+
+tr{
+    line-height: 75px;
+}

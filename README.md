@@ -1,4 +1,4 @@
 # jsudoku
 Sudoku in JS
 
-Try it here: zaini.me/jsudoku
+Try it here: http://zaini.me/jsudoku

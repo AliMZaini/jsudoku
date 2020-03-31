@@ -167,11 +167,27 @@ function createTable() {
     document.body.appendChild(button);
 
     // Populate table
-    populateTable(originalBoard);
+    initialPopulateTable(originalBoard);
 }
 
-function populateTable(board) {
+async function populateTable(board) {
     for (var index = 0; index < board.length; index++) {
+        // if a value on the table is being changed, highlight it a different colour as it changes
+        var cell = document.getElementById("" + index);
+        if (cell.innerText != board[index]) {
+            cell.style.color = "#204051";
+            cell.style.background = "#b4dfe5";
+            await new Promise(r => setTimeout(r, 200));
+            cell.style.color = "#b4dfe5";
+            cell.style.background = "#3b6978";
+        }
+        cell.innerHTML = board[index];
+    }
+}
+
+function initialPopulateTable(board) {
+    for (var index = 0; index < board.length; index++) {
+        // if a value on the table is being changed, highlight it a different colour as it changes
         document.getElementById("" + index).innerHTML = board[index];
     }
 }

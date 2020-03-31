@@ -1,13 +1,13 @@
 var originalBoard = [
-      ,1, ,4, ,8, ,2,9
-    , , , , , , , , ,4
-    ,8,5, , ,2, , , ,7
-    , , ,8,3,7,4,2, ,
-    , ,2, , , , , , ,
-    , , ,3,2,6,1,7, ,
-    , , , , ,9,3,6,1,2
-    ,2, , , , , ,4, ,3
-    ,1,3, ,6,4,2, ,7,undefined
+      , , ,2,6, ,7, ,1
+    ,6,8, , ,7, , ,9,
+    ,1,9, , , ,4,5, ,
+    ,8,2, ,1, , , ,4,
+    , , ,4,6, ,2,9, ,
+    , ,5, , , ,3, ,2,8
+    , , ,9,3, , , ,7,4
+    , ,4, , ,5, , ,3,6
+    ,7, ,3, ,1,8, , ,undefined
 ];
 
 var board = originalBoard.slice();
@@ -27,6 +27,7 @@ function checkNoDuplicates(array){
     for (i = 0; i < array.length; i++){
         if(array[i] != null){
             if (getOccurances(array, array[i]) != 1){
+                console.log(array);
                 return false;
             }
         }
@@ -41,7 +42,7 @@ function getRow(rowNumber) {
 
 function checkRow(rowNumber){
     var row = getRow(rowNumber);
-    checkNoDuplicates(row);
+    return checkNoDuplicates(row);
 }
 
 function getColumn(colNumber){
@@ -55,7 +56,7 @@ function getColumn(colNumber){
 
 function checkColumn(colNumber){
     var column = getColumn(colNumber);
-    checkNoDuplicates(column);
+    return checkNoDuplicates(column);
 }
 
 // disgusting
@@ -100,7 +101,7 @@ function getSubgrid(gridNumber){
 
 function checkSubgrid(gridNumber){
     var subGrid = getSubgrid(gridNumber);
-    checkNoDuplicates(subGrid);
+    return checkNoDuplicates(subGrid);
 }
 
 // returns true if the board is in a valid state
@@ -123,3 +124,5 @@ function insertValue(value, columnNumber, rowNumber){
 }
 
 // solution is found if all cells have values and checkBoard returns true. we do this check when we are on the final cell.
+
+console.log(checkBoard());

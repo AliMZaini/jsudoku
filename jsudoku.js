@@ -1,6 +1,6 @@
 // From: https://dingo.sbs.arizona.edu/~sandiway/sudoku/examples.html
 var originalBoard = [
-    0, 0, 0, 2, 6, 0, 7, 0, 1
+      0, 0, 0, 2, 6, 0, 7, 0, 1
     , 6, 8, 0, 0, 7, 0, 0, 9, 0
     , 1, 9, 0, 0, 0, 4, 5, 0, 0
     , 8, 2, 0, 1, 0, 0, 0, 4, 0
@@ -28,23 +28,17 @@ function getOccurances(array, query) {
 // checks there are no duplicates in an array, where duplicate nulls are allowed
 function checkNoDuplicates(array) {
     for (i = 0; i < array.length; i++) {
-        if (array[i] != 0) {
-            if (getOccurances(array, array[i]) != 1) {
-                return false;
-            }
-        }
+        if (array[i] != 0 && getOccurances(array, array[i]) != 1) return false;
     }
     return true;
 }
 
 function getRow(rowNumber, board) {
-    var rowNumber = rowNumber * 9;
-    return board.slice(rowNumber, rowNumber + 9);
+    return board.slice(rowNumber * 9, (rowNumber * 9) + 9);
 }
 
 function checkRow(rowNumber, board) {
-    var row = getRow(rowNumber, board);
-    return checkNoDuplicates(row);
+    return checkNoDuplicates(getRow(rowNumber, board));
 }
 
 function getColumn(colNumber, board) {
@@ -57,8 +51,7 @@ function getColumn(colNumber, board) {
 }
 
 function checkColumn(colNumber, board) {
-    var column = getColumn(colNumber, board);
-    return checkNoDuplicates(column);
+    return checkNoDuplicates(getColumn(colNumber, board));
 }
 
 // disgusting
@@ -102,25 +95,20 @@ function getSubgrid(gridNumber, board) {
 }
 
 function checkSubgrid(gridNumber, board) {
-    var subGrid = getSubgrid(gridNumber, board);
-    return checkNoDuplicates(subGrid);
+    return checkNoDuplicates(getSubgrid(gridNumber, board));
 }
 
 // returns true if the board is in a valid state
 function checkBoard(board) {
     for (var i = 0; i < 9; i++) {
-        if (!checkRow(i, board) || !checkColumn(i, board) || !checkSubgrid(i, board)) {
-            return false;
-        }
+        if (!checkRow(i, board) || !checkColumn(i, board) || !checkSubgrid(i, board)) return false;
     }
     return true;
 }
 
 function findEmptyIndex(board) {
     for (var i = 0; i < board.length; i++) {
-        if (board[i] === 0) {
-            return i;
-        }
+        if (board[i] === 0) return i;
     }
     return -1;
 }
@@ -167,7 +155,7 @@ function createTable() {
     document.body.appendChild(button);
 
     // Populate table
-    initialPopulateTable(originalBoard);
+    quickPopulateTable(originalBoard);
 }
 
 async function populateTable(board) {
@@ -185,9 +173,8 @@ async function populateTable(board) {
     }
 }
 
-function initialPopulateTable(board) {
+function quickPopulateTable(board) {
     for (var index = 0; index < board.length; index++) {
-        // if a value on the table is being changed, highlight it a different colour as it changes
         document.getElementById("" + index).innerHTML = board[index];
     }
 }

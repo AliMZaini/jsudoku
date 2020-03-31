@@ -126,17 +126,16 @@ function findEmptyIndex(board) {
 }
 
 // Backtracking algorithm from https://see.stanford.edu/materials/icspacs106b/Lecture11.pdf
-function solve(board) {
-    // TODO add delay before populating table
+async function solve(board) {
+    await new Promise(r => setTimeout(r, 200));
     populateTable(board);
     var emptyIndex = findEmptyIndex(board);
-    if (emptyIndex === -1) { // checks if there are empty cells
-        return true;
-    }
+    if (emptyIndex === -1) return true;
+
     for (var value = 1; value < 10; value++) {
         if (checkBoard(board)) {
             board[emptyIndex] = value;
-            if (solve(board)) {
+            if (await solve(board)) {
                 return true;
             }
             board[emptyIndex] = 0;

@@ -22,6 +22,18 @@ function getOccurances(array, query) {
     return array.filter((e) => (e === query)).length;
 }
 
+// checks there are no duplicates in an array, where duplicate nulls are allowed
+function checkNoDuplicates(array){
+    for (i = 0; i < array.length; i++){
+        if(array[i] != null){
+            if (getOccurances(array, array[i]) != 1){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 function getRow(rowNumber) {
     var rowNumber = rowNumber * 9;
     return board.slice(rowNumber, rowNumber + 9);
@@ -29,14 +41,7 @@ function getRow(rowNumber) {
 
 function checkRow(rowNumber){
     var row = getRow(rowNumber);
-    for (i = 0; i < row.length; i++){
-        if(row[i] != null){
-            if (getOccurances(row, row[i]) != 1){
-                return false;
-            }
-        }
-    }
-    return true;
+    checkNoDuplicates(row);
 }
 
 function getColumn(colNumber){
@@ -50,14 +55,7 @@ function getColumn(colNumber){
 
 function checkColumn(colNumber){
     var column = getColumn(colNumber);
-    for (i = 0; i < column.length; i++){
-        if(column[i] != null){
-            if (getOccurances(column, column[i]) != 1){
-                return false;
-            }
-        }
-    }
-    return true;
+    checkNoDuplicates(column);
 }
 
 // disgusting
@@ -102,14 +100,7 @@ function getSubgrid(gridNumber){
 
 function checkSubgrid(gridNumber){
     var subGrid = getSubgrid(gridNumber);
-    for (i = 0; i < subGrid.length; i++){
-        if(subGrid[i] != null){
-            if (getOccurances(subGrid, subGrid[i]) != 1){
-                return false;
-            }
-        }
-    }
-    return true;
+    checkNoDuplicates(subGrid);
 }
 
 // returns true if the board is in a valid state
@@ -130,3 +121,5 @@ function insertValue(value, columnNumber, rowNumber){
     }
     return false;
 }
+
+// solution is found if all cells have values and checkBoard returns true. we do this check when we are on the final cell.

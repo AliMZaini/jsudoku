@@ -4,7 +4,7 @@ body {
     font-family: "Segoe UI";
 }
 
-button{
+button {
     background-color: #3b6978;
     color: #b4dfe5;
     border: 5px solid #b4dfe5;
@@ -15,27 +15,27 @@ button{
     border-radius: 30px;
 }
 
-table, td{
+table, td {
     color: #b4dfe5;
     background: #3b6978;
     margin: auto;
 }
 
-table{
+table {
     margin-top: 5%;
     width: 36%;
     border: 20px solid #b4dfe5;
     border-radius: 30px;
 }
 
-td{
+td {
     text-align: center;
     vertical-align: middle;
     font-size: 54px;
     width: 6%;
 }
 
-tr{
+tr {
     line-height: 75px;
 }
 

@@ -1,6 +1,6 @@
 // From: https://dingo.sbs.arizona.edu/~sandiway/sudoku/examples.html
 var originalBoard = [
-      0, 0, 0, 2, 6, 0, 7, 0, 1
+    0, 0, 0, 2, 6, 0, 7, 0, 1
     , 6, 8, 0, 0, 7, 0, 0, 9, 0
     , 1, 9, 0, 0, 0, 4, 5, 0, 0
     , 8, 2, 0, 1, 0, 0, 0, 4, 0
@@ -148,11 +148,11 @@ function solve(board) {
 function createTable() {
     var table = document.createElement('table');
     var id = 0;
-    for (var i = 1; i < size+1; i++) {
+    for (var i = 1; i < size + 1; i++) {
         var tr = document.createElement('tr');
-        for (var j = 1; j < size+1; j++) {
+        for (var j = 1; j < size + 1; j++) {
             var td = document.createElement('td');
-            td.setAttribute("id", ""+id);
+            td.setAttribute("id", "" + id);
             id++;
             tr.appendChild(td);
         }

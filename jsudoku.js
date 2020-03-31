@@ -114,7 +114,7 @@ function checkBoard(board){
     return true;
 }
 
-function findEmpty(board) {
+function findEmptyIndex(board) {
     for (var i = 0; i < board.length; i++){
         if (board[i] === 0){
             return i;
@@ -123,7 +123,22 @@ function findEmpty(board) {
     return -1;
 }
 
-function solve(board){
+// Backtracking algorithm from https://see.stanford.edu/materials/icspacs106b/Lecture11.pdf
+function solve(board) {
+    printBoard(board);
+    var emptyIndex = findEmptyIndex(board);
+    if (emptyIndex === -1) { // checks if there are empty cells
+        return true;
+    }
+    for (var value = 1; value < 10; value++){
+        if (checkBoard(board)){
+            board[emptyIndex] = value;
+            if (solve(board)){
+                return true;
+            }
+            board[emptyIndex] = 0;
+        }
+    }
     return false;
 }
 

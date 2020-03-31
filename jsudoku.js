@@ -158,12 +158,20 @@ function createTable() {
         table.appendChild(tr);
     }
     document.body.appendChild(table);
+
+    // Create solve button
+    var button = document.createElement('button');
+    button.append(document.createTextNode('SOLVE'));
+    button.setAttribute('id', 'solveButton');
+    button.setAttribute('onclick', 'solve(board)');
+    document.body.appendChild(button);
+
+    // Populate table
     populateTable(originalBoard);
-    solve(board);
 }
 
 function populateTable(board) {
-    for (var index = 0; index < board.length; index++){
-        document.getElementById(""+index).innerHTML = board[index];
+    for (var index = 0; index < board.length; index++) {
+        document.getElementById("" + index).innerHTML = board[index];
     }
 }

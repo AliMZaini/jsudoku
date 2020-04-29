@@ -3,6 +3,8 @@ Sudoku in JS
 
 Try it here: http://zaini.me/jsudoku
 
+Improved here: https://github.com/AliMZaini/reactSudoku
+
 # Things to add:
 
 * Let user try and complete the puzzle

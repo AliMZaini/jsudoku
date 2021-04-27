@@ -1,9 +1,9 @@
 # jsudoku
 Sudoku in JS
 
-Try it here: http://zaini.me/jsudoku
+Try it here: http://old.zaini.me/jsudoku
 
-Improved here: https://github.com/AliMZaini/reactSudoku
+Improved here: https://github.com/zaini/reactSudoku
 
 # Things to add:
 
